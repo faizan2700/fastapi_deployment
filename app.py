@@ -1,6 +1,6 @@
 from fastapi import FastAPI 
 from fastapi.responses import HTMLResponse 
-# from middleware import AutoErrorHandler 
+from middleware import AutoErrorHandler 
 from routes import router 
 
 
@@ -11,4 +11,4 @@ app.include_router(router, prefix="/api")
 def home(): 
     return HTMLResponse('<h1>Hello World</h1>')  
 
-# app = AutoErrorHandler(app) 
+app = AutoErrorHandler(app) 
