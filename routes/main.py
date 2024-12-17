@@ -13,7 +13,7 @@ async def verification_for_webhook(mode: str = Query(None, alias="hub.mode"), to
     print(f'Incoming request {token}, {mode}, {challenge}') 
     if mode == 'subscribe' and token == os.getenv('WHATSAPP_VERIFY_TOKEN'): 
         print(str(challenge)) 
-        return str(challenge) 
+        return int(challenge) 
     else: 
         error = f'mode={mode}, token={token}, challenge={challenge}'
         raise HTTPException(status_code=400, detail=str(error))  
