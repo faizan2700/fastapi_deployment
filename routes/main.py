@@ -11,7 +11,7 @@ whatsapp_service = WhatsappService()
 @router.get('/webhook') 
 async def verification_for_webhook(mode: str = Query(None, alias="hub.mode"), token: str = Query(None, alias='hub.verify_token'), challenge: str = Query(None, alias='hub.challenge')):  
     if mode == 'subscribe' and token == os.getenv('WHATSAPP_VERIFY_TOKEN'): 
-        return {'challenge': challenge} 
+        return str(challenge) 
     else: 
         error = f'mode={mode}, token={token}, challenge={challenge}'
         raise HTTPException(status_code=400, detail=str(error))  
