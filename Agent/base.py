@@ -1,0 +1,2 @@
+class Assitant: 
+    pass 
