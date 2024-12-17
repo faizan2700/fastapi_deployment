@@ -1,5 +1,5 @@
 import os 
-from fastapi import FastAPI, Request, Response, HTTPException, APIRouter 
+from fastapi import FastAPI, Request, Response, HTTPException, APIRouter, Query 
 import requests
 from dotenv import load_dotenv 
 from whatsapp_service import WhatsappService
@@ -9,8 +9,12 @@ from fastapi.responses import HTMLResponse
 router = APIRouter() 
 whatsapp_service = WhatsappService() 
 @router.get('/webhook') 
-async def verification_for_webhook(request: Request): 
-    return {'status': 200, 'message': 'Verified!'} 
+async def verification_for_webhook(mode: str = Query(None, alias="hub.mode"), token: str = Query(None, alias='hub.verify_token'), challenge: str = Query(None, alias='hub.challenge')):  
+    if mode == 'subscribe' and token == os.getenv('WHATSAPP_VERIFY_TOKEN'): 
+        return {'challenge': challenge} 
+    else: 
+        error = f'mode={mode}, token={token}, challenge={challenge}'
+        raise HTTPException(status_code=400, detail=str(error))  
 
 @router.post('/webhook') 
 async def handle_webhook_payload(request: Request): 
