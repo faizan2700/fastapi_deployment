@@ -4,7 +4,7 @@ import requests
 from dotenv import load_dotenv 
 from whatsapp_service import WhatsappService
 from Agent import Assistant 
-from fastapi.responses import HTMLReponse 
+from fastapi.responses import HTMLResponse 
 
 router = APIRouter() 
 whatsapp_service = WhatsappService() 
