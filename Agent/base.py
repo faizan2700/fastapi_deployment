@@ -1,2 +1,2 @@
-class Assitant: 
+class Assistant: 
     pass 
