@@ -1,6 +1,7 @@
 from fastapi import FastAPI 
 from fastapi.responses import HTMLResponse 
-from middleware import AutoErrorHandler 
+from middleware import AutoErrorHandler  
+from starlette.middleware.base import BaseHTTPMiddleware 
 from routes import router 
 
 
@@ -11,4 +12,5 @@ app.include_router(router, prefix="/api")
 def home(): 
     return HTMLResponse('<h1>Hello World</h1>')  
 
-app = AutoErrorHandler(app) 
+error_handling = AutoErrorHandler()
+app.add_middleware(BaseHTTPMiddleware, dispatch=error_handling) 

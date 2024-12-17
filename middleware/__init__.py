@@ -1,1 +1,1 @@
-from middleware.error_handler import AutoErrorHandler 
+from middleware.error_handler import AutoErrorHandler

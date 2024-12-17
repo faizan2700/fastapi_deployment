@@ -1,11 +1,11 @@
-from fastapi.exceptions import HTTPException 
-
+from fastapi import Request 
 class AutoErrorHandler: 
-    def __init__(self, app): 
-        self.app = app 
+    def __init__(self):
+        pass 
 
-    async def __call__(self, scope, receive, send): 
+    async def __call__(self, request, call_next): 
         try: 
-            await self.app(scope, receive, send) 
+            response = await call_next(request) 
         except Exception as error: 
-            raise HTTPException(status_code=400) 
+            return {'error': str(error), 'status': '400'} 
+         
