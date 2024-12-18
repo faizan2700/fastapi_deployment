@@ -1,0 +1,13 @@
+POST https://graph.facebook.com/v21.0/474660259071346/messages 
+Content-Type: application/json 
+Authorization: Bearer EAAdSuoYbd24BO895GDt56G9OIZArOzGFDBILoSVZBwXLwtwAdEajiwHGUE7NvZAVmI68C1v41JdAjEhNdiolNCdO8DLDBZCkAMMYtqucm0FGjG4Dc55E7nHaSAxzSEn1ZCjVjfeY8Gt02Cx2ZCwPo3P7ZA3h6Tr2wiXgyNvhjHZAfUj0NZAGKsGqc8ru7Rrffw8WFlZAFaLRMZAnJRQcdlLl1VNyqlmZCT3QqH32paYZD
+
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "+919579833281",
+  "type": "text",
+  "text": {
+    "body": "Pitch perfect."
+  }
+}

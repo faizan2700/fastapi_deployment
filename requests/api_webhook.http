@@ -1,0 +1,34 @@
+POST http://localhost:8000/api/webhook 
+Content-Type: application/json 
+
+{
+  "object": "whatsapp_business_account",
+  "entry": [{
+    "id": "WHATSAPP_BUSINESS_ACCOUNT_ID",
+    "changes": [{
+      "value": {
+        "messaging_product": "whatsapp",
+        "metadata": {
+          "display_phone_number": "+919579833281",
+          "phone_number_id": "919579833281"
+        },
+        "contacts": [{
+          "profile": {
+            "name": "NAME"
+          },
+          "wa_id": "919579833281"
+        }],
+        "messages": [{
+          "from": "+919579833281",
+          "id": "wamid.ID",
+          "timestamp": "",
+          "text": {
+            "body": "webhook testing"
+          },
+          "type": "text"
+        }]
+      },
+      "field": "messages"
+    }]
+  }]
+}

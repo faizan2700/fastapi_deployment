@@ -1,2 +1,2 @@
-GET http://localhost:8000/api/webhook?hub.mode=subscribe&hub.challenge=1234567&hub.verify_token=HAPPY HTTP/1.1
+GET https://plankton-app-rt868.ondigitalocean.app/api/webhook?hub.mode=subscribe&hub.challenge=1234567&hub.verify_token=HAPPY HTTP/1.1
 content-type: application/json 
