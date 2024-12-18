@@ -11,7 +11,11 @@ whatsapp_service = WhatsappService()
 assitant = Assistant() 
 assitant.get_response('how are you') 
 @router.get('/webhook') 
-async def verification_for_webhook(mode: str = Query(None, alias="hub.mode"), token: str = Query(None, alias='hub.verify_token'), challenge: str = Query(None, alias='hub.challenge')):  
+async def verification_for_webhook(
+    mode: str = Query(None, alias="hub.mode"), 
+    token: str = Query(None, alias='hub.verify_token'), 
+    challenge: str = Query(None, alias='hub.challenge')
+):  
     print(f'Incoming request {token}, {mode}, {challenge}') 
     if mode == 'subscribe' and token == os.getenv('WHATSAPP_VERIFY_TOKEN'): 
         print(str(challenge)) 
