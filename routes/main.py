@@ -7,7 +7,9 @@ from Agent import Assistant
 from fastapi.responses import HTMLResponse 
 
 router = APIRouter() 
-whatsapp_service = WhatsappService() 
+whatsapp_service = WhatsappService()  
+assitant = Assistant() 
+assitant.get_response('how are you') 
 @router.get('/webhook') 
 async def verification_for_webhook(mode: str = Query(None, alias="hub.mode"), token: str = Query(None, alias='hub.verify_token'), challenge: str = Query(None, alias='hub.challenge')):  
     print(f'Incoming request {token}, {mode}, {challenge}') 
