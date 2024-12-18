@@ -33,14 +33,14 @@ class WhatsappService:
                 self.base_url, 
                 json=payload, 
                 headers=headers
-            )
+            ) 
             response.raise_for_status()
             return response.json()
         except requests.RequestException as e:
             print(f"Error sending message: {e}")
             raise Exception(str(e)) 
         
-    def get_message(payload): 
+    def get_message(self, payload): 
         messages = payload["entry"][0]["changes"][0]["value"]["messages"] 
         message = [message["text"]["body"] for message in messages][0] 
         number = payload["entry"][0]["changes"][0]["value"]["messages"][0]["from"] 

@@ -3,13 +3,14 @@ from fastapi import FastAPI, Request, Response, HTTPException, APIRouter, Query
 import requests
 from dotenv import load_dotenv 
 from whatsapp_service import WhatsappService
-from Agent import Assistant 
+# from Agent import Assistant 
 from fastapi.responses import HTMLResponse 
+load_dotenv('./.env') 
 
 router = APIRouter() 
 whatsapp_service = WhatsappService()  
-assitant = Assistant() 
-assitant.get_response('how are you') 
+# assitant = Assistant() 
+# assitant.get_response('how are you') 
 @router.get('/webhook') 
 async def verification_for_webhook(
     mode: str = Query(None, alias="hub.mode"), 
@@ -26,8 +27,11 @@ async def verification_for_webhook(
 
 @router.post('/webhook') 
 async def handle_webhook_payload(request: Request): 
-    payload = await request.json() 
-    return {'status': 200, 'message': payload} 
+    payload = await request.json()  
+    num, msg = whatsapp_service.get_message(payload)
+    print(f'webhook received num:{num}, msg:{msg}')
+    whatsapp_service.send_message(num, msg) 
+    return {'status': 200} 
 
 @router.post('/send_message') 
 async def send_whatsapp_message(request: Request): 
