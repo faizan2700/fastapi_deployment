@@ -1,0 +1,6 @@
+POST http://localhost:8000/api/get_response 
+Content-Type: application/json 
+
+{
+    "message": "answer like you are a girl: What are your favorite movies"
+}
