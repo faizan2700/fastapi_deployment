@@ -1,7 +1,7 @@
 from transformers import pipeline 
 
 class Assistant: 
-    def __init__(self, model_name: str = "Qwen/QwQ-32B-Preview"):
+    def __init__(self, model_name: str = "google-t5/t5-small"):
         self.model = pipeline("text2text-generation", model=model_name) 
     def get_response(self, user_input: str) -> str:
         return self.model(user_input)[0].get('generated_text') 
