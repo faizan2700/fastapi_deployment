@@ -1,4 +1,4 @@
-POST http://localhost:8000/api/get_response 
+POST https://seal-app-k26ts.ondigitalocean.app/api/get_response 
 Content-Type: application/json 
 
 {

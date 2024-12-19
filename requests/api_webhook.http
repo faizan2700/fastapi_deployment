@@ -1,4 +1,4 @@
-POST http://localhost:8000/api/webhook 
+POST https://seal-app-k26ts.ondigitalocean.app/api/webhook 
 Content-Type: application/json 
 
 {

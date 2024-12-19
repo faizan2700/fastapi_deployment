@@ -1,4 +1,4 @@
-POST http://localhost:8000/api/send_message 
+POST https://seal-app-k26ts.ondigitalocean.app/api/send_message 
 Content-Type: application/json 
 Authorization: Bearer EAAdSuoYbd24BO895GDt56G9OIZArOzGFDBILoSVZBwXLwtwAdEajiwHGUE7NvZAVmI68C1v41JdAjEhNdiolNCdO8DLDBZCkAMMYtqucm0FGjG4Dc55E7nHaSAxzSEn1ZCjVjfeY8Gt02Cx2ZCwPo3P7ZA3h6Tr2wiXgyNvhjHZAfUj0NZAGKsGqc8ru7Rrffw8WFlZAFaLRMZAnJRQcdlLl1VNyqlmZCT3QqH32paYZD 
 
