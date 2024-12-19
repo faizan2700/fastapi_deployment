@@ -31,7 +31,9 @@ async def verification_for_webhook(
 async def handle_webhook_payload(request: Request): 
     payload = await request.json()  
     num, msg = whatsapp_service.get_message(payload)
-    print(f'webhook received num:{num}, msg:{msg}')
+    print(f'webhook received num:{num}, msg:{msg}') 
+    if num is None or msg is None: 
+        return {'status': 200} 
     whatsapp_service.send_message(num, msg) 
     return {'status': 200} 
 

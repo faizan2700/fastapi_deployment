@@ -53,5 +53,5 @@ class WhatsappService:
             print('error in getting data from webhook!') 
             print(str(error))  
             print(payload) 
-            return '+919579833281', 'hello'
+            return None, None 
         return number, message
