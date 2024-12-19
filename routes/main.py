@@ -1,16 +1,18 @@
 import os 
 from fastapi import FastAPI, Request, Response, HTTPException, APIRouter, Query 
 import requests
-from dotenv import load_dotenv 
-from whatsapp_service import WhatsappService
-# from Agent import Assistant 
-from fastapi.responses import HTMLResponse 
+from dotenv import load_dotenv  
 load_dotenv('./.env') 
+
+from whatsapp_service import WhatsappService
+from Agent import Assistant 
+from fastapi.responses import HTMLResponse 
+
 
 router = APIRouter() 
 whatsapp_service = WhatsappService()  
-# assitant = Assistant() 
-# assitant.get_response('how are you') 
+assitant = Assistant() 
+assitant.get_response('how are you') 
 @router.get('/webhook') 
 async def verification_for_webhook(
     mode: str = Query(None, alias="hub.mode"), 
@@ -35,8 +37,23 @@ async def handle_webhook_payload(request: Request):
 
 @router.post('/send_message') 
 async def send_whatsapp_message(request: Request): 
-    payload = await request.json()  
-    response = whatsapp_service.send_message('+919579591713', message_body='hello world!!!') 
+    data = await request.json() 
+    try:  
+        num, msg = data.get('number'), data.get('message') 
+    except Exception: 
+        raise HTTPException(status_code=400, detail='number and message are necessary!') 
+    resp = assitant.get_response(msg) 
+    response = whatsapp_service.send_message(num, message_body=resp) 
     return {'status': 200, 'message': response} 
+
+@router.post('/get_response') 
+async def get_ai_response(request: Request): 
+    data = await request.json()
+    try:
+        msg = data.get('message')
+    except Exception:
+        raise HTTPException(status_code=400, detail='message is necessary!')
+    resp = assitant.get_response(msg)
+    return {'status': 200, 'message': resp}
 
  

@@ -11,8 +11,10 @@ class WhatsappService:
         self.phone_number_id = os.getenv('WHATSAPP_PHONE_NUMBER_ID')
         self.base_url = f"https://graph.facebook.com/v21.0/{self.phone_number_id}/messages"
         
-        if not all([self.access_token, self.phone_number_id]):
-            raise ValueError("WhatsApp API credentials are not fully configured")
+        if not self.access_token: 
+            raise ValueError('Whatsapp Access token env not set!') 
+        if not self.phone_number_id: 
+            raise ValueError('Whatsapp phone number id not set!') 
     
     def send_message(self, to_number: str, message_body: str) -> dict:
         headers = {
@@ -34,7 +36,7 @@ class WhatsappService:
                 json=payload, 
                 headers=headers
             ) 
-            print(message_body) 
+            print(f'num: {to_number}, msg: {message_body}') 
             print(response.json())
             response.raise_for_status()
             return response.json()

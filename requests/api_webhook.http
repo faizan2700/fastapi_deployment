@@ -1,4 +1,4 @@
-POST https://plankton-app-rt868.ondigitalocean.app/api/webhook 
+POST http://localhost:8000/api/webhook 
 Content-Type: application/json 
 
 {
