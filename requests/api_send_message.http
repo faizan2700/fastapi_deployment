@@ -1,6 +1,6 @@
-POST https://seal-app-k26ts.ondigitalocean.app/api/send_message 
+POST https://shark-app-h7hqz.ondigitalocean.app/api/send_message 
 Content-Type: application/json 
-Authorization: Bearer EAAdSuoYbd24BO895GDt56G9OIZArOzGFDBILoSVZBwXLwtwAdEajiwHGUE7NvZAVmI68C1v41JdAjEhNdiolNCdO8DLDBZCkAMMYtqucm0FGjG4Dc55E7nHaSAxzSEn1ZCjVjfeY8Gt02Cx2ZCwPo3P7ZA3h6Tr2wiXgyNvhjHZAfUj0NZAGKsGqc8ru7Rrffw8WFlZAFaLRMZAnJRQcdlLl1VNyqlmZCT3QqH32paYZD 
+Authorization: Bearer EAAdSuoYbd24BO3hcorKmvrA2nzkSr0NMjk9b7EeuX1soXqwuxrEJzwlbOVG0rXQIj40IGBhE7bVzgZA07RsRuWPurBoLuQUODA5nK8HbEzZCKtTWXpWWnmS0tdeaizuj6KcrRdtbKBhbyL1PKomj1LkNPm9MhM30P5BHrUZCoEj1mxb4473O2HCnJO1fb7gVApx6iB0QoS0ZCLv5qRLhfXVGXOWncPE9Qt0ZD
 
 {
     "message": "hello how are you!", 

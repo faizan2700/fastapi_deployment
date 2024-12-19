@@ -1,6 +1,6 @@
-POST https://seal-app-k26ts.ondigitalocean.app/api/get_response 
+POST https://shark-app-h7hqz.ondigitalocean.app/api/get_response 
 Content-Type: application/json 
 
 {
-    "message": "what is 2 + 2"
+    "message": "translate in english: aap kaise hai"
 }
