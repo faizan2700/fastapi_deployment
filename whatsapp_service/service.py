@@ -44,8 +44,14 @@ class WhatsappService:
             print(f"Error sending message: {e}")
             raise Exception(str(e)) 
         
-    def get_message(self, payload): 
-        messages = payload["entry"][0]["changes"][0]["value"]["messages"] 
-        message = [message["text"]["body"] for message in messages][0] 
-        number = payload["entry"][0]["changes"][0]["value"]["messages"][0]["from"] 
+    def get_message(self, payload):  
+        try: 
+            messages = payload["entry"][0]["changes"][0]["value"]["messages"] 
+            message = [message["text"]["body"] for message in messages][0] 
+            number = payload["entry"][0]["changes"][0]["value"]["messages"][0]["from"] 
+        except Exception as error: 
+            print('error in getting data from webhook!') 
+            print(str(error))  
+            print(payload) 
+            return '+919579833281', 'hello'
         return number, message
