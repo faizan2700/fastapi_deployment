@@ -5,14 +5,11 @@ from dotenv import load_dotenv
 load_dotenv('./.env') 
 
 from whatsapp_service import WhatsappService
-from Agent import Assistant 
 from fastapi.responses import HTMLResponse 
 
 
 router = APIRouter() 
 whatsapp_service = WhatsappService()  
-assitant = Assistant() 
-assitant.get_response('how are you') 
 @router.get('/webhook') 
 async def verification_for_webhook(
     mode: str = Query(None, alias="hub.mode"), 
@@ -34,7 +31,7 @@ async def handle_webhook_payload(request: Request):
     print(f'webhook received num:{num}, msg:{msg}') 
     if num is None or msg is None: 
         return {'status': 200} 
-    resp = assitant.get_response(msg) 
+    resp = msg
     whatsapp_service.send_message(num, resp) 
     return {'status': 200} 
 
@@ -52,7 +49,7 @@ async def get_ai_response(request: Request):
         msg = data.get('message')
     except Exception:
         raise HTTPException(status_code=400, detail='message is necessary!')
-    resp = assitant.get_response(msg)
+    resp = msg
     return {'status': 200, 'message': resp}
 
  
