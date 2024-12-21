@@ -13,10 +13,3 @@ class HFAgent:
         data = {"inputs": user_input}
         response = requests.post(self.api_url, headers=self.headers, json=data) 
         return response.json()[0][0].get('label', None)  
-
-if __name__=='__main__': 
-    agent = HFAgent() 
-    while True: 
-        user_input = input("You: ") 
-        response = agent.get_response(user_input) 
-        print(f"AI: {response}") 
